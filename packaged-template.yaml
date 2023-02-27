@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Medium custom lambda stack
+Parameters:
+  expectedViews:
+    Type: Number
+    Default: 120
+  expectedBroadcasts:
+    Type: Number
+    Default: 100
+Resources:
+  InvokeCustomLambda:
+    Type: Custom::InvokeCustomLambda
+    Properties:
+      ServiceToken: arn:aws:lambda:eu-west-1:154630982620:function:cloudformationcalculator
+      expectedViews: 1200
+      expectedBroadcasts: 1000
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType:
+        Fn::GetAtt:
+        - InvokeCustomLambda
+        - instanceType
+      ImageId: ami-06e0ce9d3339cb039
+      Tags:
+      - Key: Name
+        Value: MyEC2Instance
+Outputs:
+  CustomLambdaOutput:
+    Description: Message from custom lambda
+    Value:
+      Fn::GetAtt:
+      - InvokeCustomLambda
+      - instanceType
+  EC2InstancePublicDnsName:
+    Description: Public DNS name of the EC2 instance
+    Value:
+      Fn::GetAtt:
+      - MyEC2Instance
+      - PublicDnsName
