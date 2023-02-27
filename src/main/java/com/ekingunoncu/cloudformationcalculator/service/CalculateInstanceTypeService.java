@@ -41,12 +41,11 @@ public class CalculateInstanceTypeService {
      */
     public String calculate(CalculateInstanceTypeInput input) {
         try {
-            String instanceType = loadInstanceTypeMap.keySet().stream()
+            return loadInstanceTypeMap.keySet().stream()
                     .filter(criteria -> criteria.matchesInput(input))
                     .findFirst()
                     .map(loadInstanceTypeMap::get)
                     .orElseThrow(() -> new IllegalArgumentException("No instance type matches the input criteria"));
-            return instanceType;
         } catch (IllegalArgumentException ex) {
             throw ex;
         } catch (Exception ex) {

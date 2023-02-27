@@ -20,7 +20,7 @@ public abstract class AbstractHandler<T> extends AbstractCustomResourceHandler {
     /**
      * The Spring application context used for managing dependencies.
      */
-    public ApplicationContext applicationContext;
+    ApplicationContext applicationContext;
 
     /**
      * Creates an instance of AbstractHandler and initializes the Spring application
@@ -29,7 +29,7 @@ public abstract class AbstractHandler<T> extends AbstractCustomResourceHandler {
      * If T has the @Configuration annotation, it is used to create the context.
      * Otherwise, a new context is created with the configClass.
      */
-    public AbstractHandler() {
+    AbstractHandler() {
         // Gets config class to create an Application context
         Class<T> configClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
