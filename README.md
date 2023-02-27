@@ -2,6 +2,8 @@
 
 This project is a simple AWS Lambda function that takes two arguments and returns the corresponding EC2 instance type.
 
+* Checkout Sonar : [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ekingunoncu_cloudformationcalculator&metric=alert_status)](https://sonarcloud.io/summary/overall?id=ekingunoncu_cloudformationcalculator)
+ 
 ## How to use
 
 To use this Lambda function, you can invoke it with two arguments: `expectedViews` and `expectedBroadcasts`. The function will then return the corresponding EC2 instance type based on the following table:
