@@ -18,5 +18,3 @@ To use this Lambda function, you can invoke it with two arguments: `expectedView
 We can diversify the output instance types for more ranges.
 
 This custom resource style dynamic input creation way can be used in any cloudformation template to calculate any value by converting the logic of course but the solution is ready to apply for any case you might even get parameters from databases using lambda or you can feed the template with any API.
-
-# cloudformationcalculator
